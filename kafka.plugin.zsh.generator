@@ -14,9 +14,10 @@ COMMANDS=("kafka-acls" "kafka-avro-console-consumer" "kafka-avro-console-produce
 function type_from_option() {
   option=$1
   if [[ "$option" =~ ".*String.*" ]]; then
-    if [[ "$option" =~ ".*topic.*" ]]; then
-      echo ":topic:_kafka-list-topic"
-    elif [[ "$option" =~ ".*file.*" ]]; then
+    #if [[ "$option" =~ ".*topic.*" ]]; then
+    #  echo ":topic:_kafka-list-topic"
+    #elif [[ "$option" =~ ".*file.*" ]]; then
+    if [[ "$option" =~ ".*file.*" ]]; then
       echo ":file:_files"
     else
       echo ":file:_files"
@@ -124,9 +125,9 @@ function _kafka-command() {
   eval _arguments \\\$\$arg_name
 }
 
-function _kafka-list-topic() {
-  compadd \`kcat -L  -J | jq '.topics[].topic' -r\`
-}
+#function _kafka-list-topic() {
+#  compadd \`kcat -L  -J | jq '.topics[].topic' -r\`
+#}
 
 EOF
 
